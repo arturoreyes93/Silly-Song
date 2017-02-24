@@ -21,10 +21,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
 
     @IBAction func reset(_ sender: Any) {
         
@@ -45,10 +41,20 @@ class ViewController: UIViewController {
 
 func shortNameFromName(name: String) -> String {
     let lowercaseName = name.lowercased()
-    let vowelSet = CharacterSet(charactersIn: "aeiou")
+    let vowels = "aeiou"
+    let vowelSet = CharacterSet(charactersIn: vowels)
     let range = lowercaseName.rangeOfCharacter(from: vowelSet, options:.caseInsensitive)
-    let sillyName = lowercaseName.substring(from: (range?.lowerBound)!)
-    return sillyName
+    
+    
+
+    for character in vowels.characters {
+        if name.characters.contains(character) {
+            let sillyName = lowercaseName.substring(from: (range?.lowerBound)!)
+            return sillyName
+        }
+    }
+    
+    return lowercaseName
     
 }
 
